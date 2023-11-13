@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scaleable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=7">
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1251">
+  <meta name="author" content="Sammy's code world">
+  <title>Number guessing</title>
+  <style>
+    .container {
+      background: white;
+      margin-top: 40%;
+      padding: 5px;
+      width: 90%;
+      box-shadow: 1px 2px 12px 1px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      margin-left: 4%;
+    }
+
+    .main {
+      padding: 5px;
+      text-align: center;
+    }
+
+    input[type="number"] {
+      width: 80%;
+      padding: 10px;
+      outline: none;
+      border: 2px solid blue;
+      caret-color: green;
+      text-align: center;
+      font-size: 20px;
+      color: #3A418C;
+    }
+
+    input[type="button"] {
+      padding: 7px;
+      color: blue;
+      background: transparent;
+      font-size: 25px;
+      border-radius: 5px;
+      outline: none;
+      border: 2px solid blue;
+    }
+  </style>
+</head>
+
+<body bgcolor="darkblue">
+  <div class="container">
+    <div class="main">
+      <h1>Guess My Number! </h1>
+      <p>I'm thinking of a number btw 1-100.</p>
+      <p>Guess It!</p>
+      <input type="number" id="inputVal">
+      <p id="text"></p>
+      <p id="demo"></p>
+      <input type="button" value="Guess!" onclick="guessNum()">
+    </div>
+  </div>
+  <script>
+var num = Math.floor(Math.random() * 100) + 1;
+var inputVal = document.getElementById("inputVal");
+var text = document.getElementById("text");
+var attempt = 0;
+function guessNum() {
+  var x = parseInt(inputVal.value);
+   attempt+=1;
+
+  if (isNaN(x) || x < 1 || x > 100) {
+    text.innerHTML = "Please enter a valid number between 1 and 100";
+    text.style.color ="red";
+    return;
+  }
+
+  if (x > num) {
+    text.innerHTML = "Too high, try again";
+    text.style.color ="red";
+  } else if (x < num) {
+    text.innerHTML = "Too low, try again";
+    text.style.color = "red";
+  } else {
+    text.innerHTML = "Congratulations! You have guessed correctly";
+    document.getElementById("demo").innerHTML = "After " + attempt + " attempts";
+    text.style.color = "green";
+  }
+};
+/*
+var bttt = document.getElementById('bttt')
+bttt.addEventListener('click' function(){
+  reload();
+})*/
+  </script>
+</body>
+
+    </html>
